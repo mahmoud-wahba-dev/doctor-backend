@@ -12,8 +12,8 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('context_user', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
+            $table->foreignIdFor(\App\Models\User::class)->cascadeOnDelete()->cascadeOnUpdate();
+            $table->foreignIdFor(\App\Models\Context::class)->cascadeOnDelete()->cascadeOnUpdate();
         });
     }
 

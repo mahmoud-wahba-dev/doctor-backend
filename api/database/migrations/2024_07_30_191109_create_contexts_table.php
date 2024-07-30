@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('contexts', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
+            $table->string('name', 10)->unique()->index();
         });
     }
 

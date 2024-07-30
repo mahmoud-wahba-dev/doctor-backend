@@ -13,6 +13,14 @@ return new class extends Migration
     {
         Schema::create('accounts', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('account_nr')->index();
+            $table->string('first_name');
+            $table->string('last_name');
+            $table->string('gender', 20)->default('other');
+            $table->date('dob')->nullable();
+            $table->string('bio')->nullable();
+            $table->jsonb('custom_field')->nullable();
+            $table->foreignIdFor(\App\Models\User::class)->constrained()->cascadeOnUpdate()->nullOnDelete();
             $table->timestamps();
         });
     }
