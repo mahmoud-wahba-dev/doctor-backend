@@ -4,6 +4,8 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
@@ -17,9 +19,18 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
-        'name',
         'email',
+        'phone',
         'password',
+        'blocked',
+        'block_after',
+        'blocked_at',
+        'active',
+        'last_login_at',
+        'login_count',
+        'otp',
+        'national_id',
+        'phone_verified_at'
     ];
 
     /**
@@ -41,7 +52,30 @@ class User extends Authenticatable
     {
         return [
             'email_verified_at' => 'datetime',
+            'phone_verified_at' => 'datetime',
+            'last_login_at' => 'datetime',
+            'blocked_at' => 'datetime',
+            'block_after' => 'datetime',
             'password' => 'hashed',
+            'blocked' => 'boolean',
+            'login_count' => 'integer',
+            'active' => 'boolean',
         ];
+    }
+
+    /**
+     * @return BelongsToMany
+     */
+    public function contexts(): BelongsToMany
+    {
+        return $this->belongsToMany(Context::class);
+    }
+
+    /**
+     * @return HasOne
+     */
+    public function account(): HasOne
+    {
+        return $this->hasOne(Account::class);
     }
 }
