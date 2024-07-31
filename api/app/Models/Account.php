@@ -2,13 +2,14 @@
 
 namespace App\Models;
 
+use App\Traits\HasAccountNumber;
 use Illuminate\Database\Eloquent\Casts\AsArrayObject;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Account extends Model
 {
-    use HasFactory;
+    use HasFactory, HasAccountNumber;
 
     protected $fillable =[
         'account_nr',
