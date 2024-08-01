@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api\Doctor\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Api\Doctor\Auth\LoginRequest;
+use App\Http\Resources\DOctor\DoctorResource;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
@@ -19,7 +20,7 @@ class AuthController extends Controller
 
         if(Hash::check($request->password , $user->password)){
             $token = $user->createToken($user->id)->plainTextToken;
-            return response()->json([
+            return DoctorResource::make($user->load('account'))->additional([
                 'token'=>$token,
                 'message' => __("Loged in Successfully"),
                 'status' => Response::HTTP_OK
