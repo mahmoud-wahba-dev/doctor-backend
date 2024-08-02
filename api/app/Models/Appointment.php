@@ -20,7 +20,7 @@ class Appointment extends Model
 
     protected $casts =[
         'date' => 'date',
-        'time' => 'time:H:i'
+//        'time' => 'time:H:i'
     ];
 
     /**
