@@ -1,7 +1,9 @@
 <?php
 
 use App\Http\Controllers\Api\Doctor\Account\AccountController;
+use App\Http\Controllers\Api\Doctor\Appointment\AppointmentController;
 use App\Http\Controllers\Api\Doctor\Auth\AuthController;
+use App\Http\Controllers\Api\Doctor\Disease\DiseaseController;
 use App\Http\Controllers\Api\Doctor\Patient\PatientController;
 use Illuminate\Auth\Middleware\Authenticate;
 use Illuminate\Http\Request;
@@ -27,6 +29,9 @@ Route::group([
                 Authenticate::class . ':sanctum',
             ]
         ],function (){
+            /**
+             * account routes
+             */
             Route::group([
                 'as' => 'account.',
                 'prefix' => 'account'
@@ -35,13 +40,35 @@ Route::group([
                 Route::put('', [AccountController::class, 'update'])->name('update');
             });
 
+            /**
+             * patient routes
+             */
             Route::group([
                 'as' => 'patients.',
             ],function (){
                 Route::apiResource('patients' , PatientController::class);
             });
-        });
 
+            /**
+             * diseases routes
+             */
+            Route::group([
+                'as' => 'diseases.'
+            ], function (){
+                Route::apiResource('diseases', DiseaseController::class);
+            });
+
+
+            /**
+             * appointments
+             */
+            Route::group([
+                'as' => 'appointments.'
+            ], function (){
+                Route::apiResource('appointments' , AppointmentController::class);
+            });
+
+        });
 
     });
 });
