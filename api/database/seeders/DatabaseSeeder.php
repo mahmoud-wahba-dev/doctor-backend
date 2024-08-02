@@ -19,7 +19,7 @@ class DatabaseSeeder extends Seeder
     {
         $this->call(ContextSeeder::class);
 
-        $doctor = \App\Models\User::factory()->create([
+        $doctor = \App\Models\Doctor::factory()->create([
             'email' => 'doctor@example.com',
             'email_verified_at' => now(),
             'phone_verified_at' => now(),

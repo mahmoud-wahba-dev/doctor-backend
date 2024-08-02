@@ -5,13 +5,9 @@ namespace App\Models;
 use app\Enums\UserType;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsToMany;
-use Illuminate\Database\Eloquent\Relations\HasOne;
-use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Patient extends User
+class Doctor extends User
 {
-
     /**
      * @return void
      */
@@ -20,7 +16,7 @@ class Patient extends User
         parent::boot();
 
         static::created(function ($model) {
-            $model->contexts()->syncWithoutDetaching(Context::whereIn('name', [UserType::PATIENT])->pluck('id')->toArray());
+            $model->contexts()->syncWithoutDetaching(Context::whereIn('name', [UserType::DOCTOR])->pluck('id')->toArray());
         });
     }
 }

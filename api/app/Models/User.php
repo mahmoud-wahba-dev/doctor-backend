@@ -14,6 +14,8 @@ class User extends Authenticatable
 {
     use HasFactory, Notifiable, HasApiTokens;
 
+    protected $table = 'users';
+
     /**
      * The attributes that are mass assignable.
      *
@@ -69,7 +71,7 @@ class User extends Authenticatable
      */
     public function contexts(): BelongsToMany
     {
-        return $this->belongsToMany(Context::class);
+        return $this->belongsToMany(Context::class , 'context_user', 'user_id', 'context_id');
     }
 
     /**
@@ -77,6 +79,6 @@ class User extends Authenticatable
      */
     public function account(): HasOne
     {
-        return $this->hasOne(Account::class);
+        return $this->hasOne(Account::class , 'user_id', 'id');
     }
 }

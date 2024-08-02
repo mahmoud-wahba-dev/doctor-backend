@@ -34,12 +34,14 @@ Route::group([
                 Route::get('me', [AccountController::class, 'show'])->name('me');
                 Route::put('', [AccountController::class, 'update'])->name('update');
             });
+
+            Route::group([
+                'as' => 'patients.',
+            ],function (){
+                Route::apiResource('patients' , PatientController::class);
+            });
         });
 
-        Route::group([
-            'as' => 'patients.',
-        ],function (){
-            Route::apiResource('patients' , PatientController::class);
-        });
+
     });
 });
