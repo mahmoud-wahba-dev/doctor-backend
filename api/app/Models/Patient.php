@@ -39,11 +39,11 @@ class Patient extends User
     }
 
     /**
-     * @return HasMany
+     * @return BelongsToMany
      */
     public function diseases()
     {
-        return $this->hasMany(Disease::class);
+        return $this->belongsToMany(Disease::class);
     }
 
     /**
