@@ -34,8 +34,8 @@ class Appointment extends Model
     /**
      * @return BelongsTo
      */
-    public function disease()
+    public function diagonsis()
     {
-        return $this->belongsTo(Disease::class);
+        return $this->belongsTo(Diagnosis::class);
     }
 }

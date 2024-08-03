@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Api\Doctor\Account;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Api\Doctor\Account\UpdateAccountRequest;
-use App\Http\Resources\DOctor\DoctorResource;
+use App\Http\Resources\Doctor\DoctorResource;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;

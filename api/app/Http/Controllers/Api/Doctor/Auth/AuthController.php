@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Api\Doctor\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Api\Doctor\Auth\LoginRequest;
-use App\Http\Resources\DOctor\DoctorResource;
+use App\Http\Resources\Doctor\DoctorResource;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;

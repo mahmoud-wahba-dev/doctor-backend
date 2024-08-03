@@ -41,9 +41,9 @@ class Patient extends User
     /**
      * @return BelongsToMany
      */
-    public function diseases()
+    public function digonses()
     {
-        return $this->belongsToMany(Disease::class);
+        return $this->belongsToMany(Diagnosis::class);
     }
 
     /**
