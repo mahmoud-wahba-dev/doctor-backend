@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('diagnosis_patient', function (Blueprint $table) {
             $table->id();
             $table->foreignIdFor(\App\Models\Patient::class);
-            $table->foreignIdFor(\App\Models\Disease::class);
+            $table->foreignIdFor(\App\Models\Diagnosis::class);
             $table->text('notes')->nullable();
             $table->timestamps();
         });

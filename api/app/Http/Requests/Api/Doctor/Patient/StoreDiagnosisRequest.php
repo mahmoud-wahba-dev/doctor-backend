@@ -4,7 +4,7 @@ namespace App\Http\Requests\Api\Doctor\Patient;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class StoreDiseasRequest extends FormRequest
+class StoreDiagnosisRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -22,7 +22,7 @@ class StoreDiseasRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'disease_id' => 'exists:diseases,id'
+            'diagnosis_id' => 'exists:diagnoses,id'
         ];
     }
 }

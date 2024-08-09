@@ -53,4 +53,9 @@ class Patient extends User
     {
         return $this->hasMany(Appointment::class);
     }
+
+    public function diagnoses()
+    {
+        return $this->belongsToMany(Diagnosis::class);
+    }
 }

@@ -6,7 +6,7 @@ use App\Http\Controllers\Api\Doctor\Auth\AuthController;
 use App\Http\Controllers\Api\Doctor\Diagnosis\DiagnosisController;
 use App\Http\Controllers\Api\Doctor\Disease\DiseaseController;
 use App\Http\Controllers\Api\Doctor\Patient\PatientController;
-use App\Http\Controllers\Api\Doctor\Patient\PatientDiseasesController;
+use App\Http\Controllers\Api\Doctor\Patient\PatientDiagnosesController;
 use Illuminate\Auth\Middleware\Authenticate;
 use Illuminate\Support\Facades\Route;
 
@@ -48,7 +48,7 @@ Route::group([
                 'as' => 'patients.',
             ],function (){
                 Route::apiResource('patients' , PatientController::class);
-                Route::post('patients/{patient}/diseases', [PatientDiseasesController::class , 'store'] );
+                Route::post('patients/{patient}/diagnoses', [PatientDiagnosesController::class , 'store'] );
             });
 
             /**

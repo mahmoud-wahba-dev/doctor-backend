@@ -4,27 +4,27 @@ namespace App\Http\Controllers\Api\Doctor\Patient;
 
 use app\Enums\UserType;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Api\Doctor\Patient\StoreDiseasRequest;
-use App\Http\Resources\Patient\PatientDiseasesResource;
+use App\Http\Requests\Api\Doctor\Patient\StoreDiagnosisRequest;
+use App\Http\Resources\Patient\PatientDiagnosesResource;
 use App\Models\Context;
 use App\Models\Disease;
 use App\Models\Patient;
 use Illuminate\Http\Request;
 
-class PatientDiseasesController extends Controller
+class PatientDiagnosesController extends Controller
 {
 
     public function store(
         Patient $patient,
-        StoreDiseasRequest $request
+        StoreDiagnosisRequest $request
     )
     {
-        $patient->diseases()->syncWithoutDetaching([
-            $request->disease_id
+        $patient->diagnoses()->syncWithoutDetaching([
+            $request->diagnosis_id
         ]);
 
-        return PatientDiseasesResource::make(
-            $patient->load('diseases')
+        return PatientDiagnosesResource::make(
+            $patient->load('diagnoses')
         );
     }
 

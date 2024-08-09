@@ -5,7 +5,7 @@ namespace App\Http\Resources\Patient;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class PatientDiseasesResource extends JsonResource
+class PatientDiagnosesResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
