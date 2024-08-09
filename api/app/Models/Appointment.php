@@ -12,7 +12,7 @@ class Appointment extends Model
 
     protected $fillable=[
         'patient_id',
-        'disease_id',
+        'diagnosis_id',
         'date',
         'time',
         'price'
@@ -34,7 +34,7 @@ class Appointment extends Model
     /**
      * @return BelongsTo
      */
-    public function diagonsis()
+    public function diagnosis()
     {
         return $this->belongsTo(Diagnosis::class);
     }

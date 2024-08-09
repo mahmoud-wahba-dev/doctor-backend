@@ -10,23 +10,34 @@ use Illuminate\Http\Request;
 
 class AppointmentController extends Controller
 {
-    public function index()
+    public function index(
+        Request $request
+    )
     {
 
+        $appointments = Appointment::when(
+            $request->patient_id , function ($query) use ($request) {
+                $query->where('patient_id' , $request->patient_id);}
+        )->get();
+
+        return AppointmentResource::collection($appointments);
     }
 
     public function store(
         StoreAppointmentRequest $request
     )
     {
+        $appointment = Appointment::create($request->validated());
         return AppointmentResource::make(
-            Appointment::create($request->validated())
+            $appointment->load(['patient' , 'diagnosis'])
         );
     }
 
-    public function show()
+    public function show(
+        Appointment $appointment
+    )
     {
-
+        return AppointmentResource::make($appointment);
     }
 
     public function update()

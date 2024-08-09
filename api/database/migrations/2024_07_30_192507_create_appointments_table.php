@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('appointments', function (Blueprint $table) {
             $table->id();
             $table->foreignIdFor(\App\Models\Patient::class);
-            $table->foreignIdFor(\App\Models\Disease::class);
+            $table->foreignIdFor(\App\Models\Diagnosis::class);
             $table->date('date')->nullable();
             $table->time('time')->nullable();
             $table->double('price')->default(0);
