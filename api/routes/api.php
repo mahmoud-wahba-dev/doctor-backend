@@ -3,11 +3,11 @@
 use App\Http\Controllers\Api\Doctor\Account\AccountController;
 use App\Http\Controllers\Api\Doctor\Appointment\AppointmentController;
 use App\Http\Controllers\Api\Doctor\Auth\AuthController;
+use App\Http\Controllers\Api\Doctor\Diagnosis\DiagnosisController;
 use App\Http\Controllers\Api\Doctor\Disease\DiseaseController;
 use App\Http\Controllers\Api\Doctor\Patient\PatientController;
 use App\Http\Controllers\Api\Doctor\Patient\PatientDiseasesController;
 use Illuminate\Auth\Middleware\Authenticate;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 Route::group([
@@ -58,6 +58,10 @@ Route::group([
                 'as' => 'diseases.'
             ], function (){
                 Route::apiResource('diseases', DiseaseController::class);
+            });
+
+            Route::group(['as' => 'diagnoses.'], function (){
+                Route::apiResource('diagnoses', DiagnosisController::class);
             });
 
 
